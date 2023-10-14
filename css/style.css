@@ -10,6 +10,10 @@
     font-family: "Inter Semi-Bold";
     src: url("../fonts/Inter-SemiBold.ttf");
 }
+@font-face {
+    font-family: "Inter Light";
+    src: url("../fonts/Inter-Light.ttf");
+}
 
 :root {
     --text: #050802;
@@ -17,15 +21,17 @@
     --CTA: #7AF300;
     --secondary: #E6F3D8;
     --accent: #53A27D;
+    --accent2: #B5D9C8;
     --large-screen-size: 1250px;
     --medium-screen-size: 990px;
     --small-screen-size: 672px;
-
+    --very-small-screen-size: 338px;
 }
 
 * {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    word-break: break-word;
 }
 
 a {
@@ -76,6 +82,7 @@ header nav ul li:not(:last-child) {
 header nav ul li:last-child {
     font-size: medium;
     transition: 100ms all;
+    font-weight: bold;
 }
 header nav ul li:last-child:active {
     transform: translateY(7px);
@@ -108,12 +115,139 @@ main {
 main section.main-section {
     min-height: 100vh;
     width: 100%;
-    background-color: lightblue;
-    display: grid;
-    place-items: center;
-    font-size: 50px;
-    font-weight: bold;
-}
-main section.main-section:nth-of-type(even) {
     background-color: red;
+}
+main section.main-section:nth-child(even){
+    background-color: orange;
+}
+main section.main-section:first-child {
+    min-height: calc(100vh - 100px);
+    background-color: transparent;
+}
+
+.home {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    padding: 0 50px;
+    position: relative;
+}
+
+.home div.home-left-side p {
+    margin: 0;
+    font-size: clamp(30px, calc(4vw - 1px), 45px);
+    font-family: "Inter Bold", sans-serif;
+}
+.home div.home-left-side p:last-child span {
+    color: var(--accent);
+    font-family: "Inter Bold", sans-serif;
+}
+
+.home div.home-right-side div {
+    position: relative;
+}
+
+.home div.home-right-side #blob {
+    color: var(--accent);
+    width: clamp(300px, calc(30vw - 40px), 500px);
+    height: clamp(300px, calc(30vw - 40px), 500px);
+    z-index: 1;
+    animation: animateBigBlob 20s linear infinite;
+}
+.home div.home-right-side #blob-background-top {
+    color: var(--accent2);
+    width: clamp(150px, calc(30vw - 40px), 225px);
+    height: clamp(150px, calc(30vw - 40px), 225px);
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    transform: rotate(45deg);
+    z-index: -1;
+    animation: animateTopBlob 10s linear infinite;
+}
+.home div.home-right-side #blob-background-bottom {
+    color: var(--accent2);
+    width: clamp(150px, calc(30vw - 40px), 225px);
+    height: clamp(150px, calc(30vw - 40px), 225px);
+    position: absolute;
+    right: -20px;
+    bottom: -10px;
+    transform: rotate(20deg);
+    z-index: -1;
+    animation: animateBottomBlob 10s linear infinite;
+}
+
+.home #moreContentArrowDown {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    color: var(--accent);
+}
+
+@keyframes animateBigBlob {
+    0% {
+        transform:  rotate(0deg);
+    }
+    100% {
+        transform:  rotate(360deg);
+    }
+}
+@keyframes animateTopBlob {
+    0% {
+        transform:  rotate(45deg) scaleX(1.1) scaleY(1);
+    }
+    50% {
+        transform:  rotate(180deg) scaleX(1.1) scaleY(1.25);
+    }
+    100% {
+        transform:  rotate(405deg) scaleX(1.1) scaleY(1);
+    }
+}
+@keyframes animateBottomBlob {
+    0% {
+        transform:  rotate(20deg) scaleX(1.1) scaleY(1);
+    }
+    50% {
+        transform:  rotate(-160deg) scaleX(1.1) scaleY(1.2);
+    }
+    100% {
+        transform:  rotate(-340deg) scaleX(1.1) scaleY(1);
+    }
+}
+
+@media screen and (max-width: 672px) {
+    .home {
+        align-content: center;
+        gap: 50px;
+    }
+    .home div.home-left-side {
+        transform: translateY(-50%);
+    }
+    .home #moreContentArrowDown {
+        aspect-ratio: 0.13;
+        height: 15px;
+    }
+}
+@media screen and (max-width: 456px) {
+    .home div.home-left-side {
+        transform: translateY(0);
+    }
+    .home div.home-right-side #blob{
+        height: 150px;
+        width: 150px;
+    }
+    .home div.home-right-side #blob-background-top,
+    .home div.home-right-side #blob-background-bottom {
+        height: 75px;
+        width: 75px;
+    }
+    .home {
+        padding: 0 10px;
+    }
+    .home #moreContentArrowDown {
+        aspect-ratio: 0.13;
+        height: 10px;
+    }
 }
