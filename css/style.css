@@ -432,6 +432,11 @@ SKILLS
     }
 }
 
+/* 
+=======================================
+ABOUT ME
+=======================================
+*/
 
 
 
@@ -461,7 +466,7 @@ footer .footer-container {
     padding: 0 50px;
 }
 
-footer .footer-container div:first-of-type{
+footer .footer-container > div:first-of-type{
     margin: 50px 0;
     display: flex;
     gap: 25px;
@@ -484,9 +489,58 @@ footer .footer-container > div:last-child {
     justify-content: space-between;
     align-items: center;
     margin: 15px 0 25px 0;
-    height: 25px;
+    min-height: 25px;
 }
 footer .footer-container > div:last-child p:first-of-type {
     position: relative;
     margin: 0;
+}
+
+footer .footer-container > div:last-child a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer .footer-container > div:last-child a:hover > .contact-me-logo{
+    background-color: var(--secondary);
+    color: var(--accent);
+    transition: 500ms all;
+
+}
+footer .footer-container > div:last-child div:has(a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer .contact-me-logo {
+    background-color: var(--accent);
+    color: var(--secondary);
+    height: 30px;
+    width: 30px;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 672px) {
+    footer .footer-container {
+        padding: 0 10px;
+    }
+}
+@media screen and (max-width: 338px) {
+    footer .footer-container > div:first-of-type{
+        flex-direction: column;
+        gap: 5px;
+    }
+    footer .footer-container > div:last-child {
+        flex-direction: column;
+        gap: 15px;
+    }
+    footer .footer-container > div:last-child div:has(a){
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    footer .footer-container > div:last-child > p {
+        display: none;
+    }
 }
