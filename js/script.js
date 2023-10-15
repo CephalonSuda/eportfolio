@@ -21,7 +21,6 @@ function changeSkillRowAmount(x) {
 function fillSkills() {
 
     const skillsContainer = document.querySelector("#skills ul.skills-container");
-    
 
     for (const skill of skills){
 
@@ -44,7 +43,23 @@ function fillSkills() {
 
 }
 
+function observeHiddenElements() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            } else {
+                entry.target.classList.remove("visible");
+            }
+        })
+    });
+
+    const hiddenElements = document.querySelectorAll(".hidden");
+    hiddenElements.forEach((el) => observer.observe(el));
+}
+
 function init() {
+    observeHiddenElements();
 
     changeSkillRowAmount();
     window.addEventListener("resize", changeSkillRowAmount)

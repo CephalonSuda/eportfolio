@@ -54,6 +54,44 @@ body {
     overflow-x: auto;
 }
 
+.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(-100%);
+    transition: 1s all;
+}
+
+.visible {
+    transform: translateX(0px);
+    filter: blur(0);
+    opacity: 1;
+}
+
+.slideIn-bottom.hidden {
+    opacity: 0;
+    filter: blur(1px);
+    transform: translateY(0);
+    transition: 1s all;
+}
+.slideIn-bottom.visible {
+    transform: translateX(0px);
+    filter: blur(0);
+    opacity: 1;
+}
+
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+/* 
+=======================================
+HEADER / NAV
+=======================================
+*/
+
 header {
     max-width: var(--large-screen-size);
     width: 100%;
@@ -141,6 +179,9 @@ HOME
     margin: 0;
     font-size: clamp(30px, calc(4vw - 1px), 45px);
     font-family: "Inter Bold", sans-serif;
+}
+.home div.home-left-side p:last-child {
+    transition-delay: 100ms;
 }
 .home div.home-left-side p:last-child span {
     color: var(--accent);
