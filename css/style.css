@@ -386,6 +386,12 @@ SKILLS
     width: 60%;
     height: 60%;
     object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 @media screen and (max-width: 990px) {
@@ -425,14 +431,3 @@ SKILLS
         transform: translateX(-10px);
     }
 }
-
-
-
-
-
-/*
-    --large-screen-size: 1250px;
-    --medium-screen-size: 990px;
-    --small-screen-size: 672px;
-    --very-small-screen-size: 338px;
-*/
