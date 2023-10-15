@@ -33,6 +33,10 @@
     font-family: "Inter", sans-serif;
     word-break: break-word;
 }
+*::selection {
+    background-color: var(--accent);
+    color: var(--secondary);
+}
 
 a {
     text-decoration: none;
@@ -152,7 +156,8 @@ main section.main-section {
     background-color: red; /* Unneeded once fully done*/
 }
 main section.main-section:nth-child(1),
-main section.main-section:nth-child(2) {    /* Unneeded once fully done*/
+main section.main-section:nth-child(2),
+main section.main-section:nth-child(4) {    /* Unneeded once fully done*/
     background-color: transparent;
 }
 
@@ -180,12 +185,20 @@ HOME
     font-size: clamp(30px, calc(4vw - 1px), 45px);
     font-family: "Inter Bold", sans-serif;
 }
+.home div.home-left-side p::selection{
+    color: var(--accent);
+    background-color: rgba(0,0,0, 0.05)
+}
 .home div.home-left-side p:last-child {
     transition-delay: 100ms;
 }
 .home div.home-left-side p:last-child span {
     color: var(--accent);
     font-family: "Inter Bold", sans-serif;
+}
+.home div.home-left-side p:last-child span::selection{
+    background-color: var(--accent);
+    color: var(--secondary);
 }
 
 .home div.home-right-side div {
@@ -416,7 +429,7 @@ SKILLS
     font-family: "Inter Light", sans-serif;
     position: relative;
     transform: translateX(25px);
-    font-size: clamp(25px, calc(5vw), 40px);
+    font-size: clamp(25px, calc(5vw), 35px);
     margin-bottom: 0;
 }
 #skills div.skills-title div {
@@ -438,8 +451,178 @@ ABOUT ME
 =======================================
 */
 
+#aboutme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter Light", sans-serif;
+    color: var(--text);
+}
 
+#aboutme .aboutme-container {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 50px;
+}
 
+#aboutme div.about-left {
+    min-width: 600px;
+    max-width: 600px;
+    width: 100%;
+    height: max-content;
+}
+
+#aboutme .greeting-1,
+#aboutme .greeting-2 {
+    margin: 0;
+    font-size: 30px;
+}
+#aboutme .greeting-2 > span,
+#aboutme .role {
+    font-family: "Inter Bold", sans-serif;
+    color: var(--accent);
+    transition-delay: 250ms;
+}
+
+#aboutme .role {
+    font-size: 25px;
+}
+
+#aboutme .textblock-info {
+    line-height: 30px;
+    letter-spacing: 1px;
+    transition-delay: 500ms;
+}
+
+#aboutme .contact-me {
+    color: var(--accent);
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    font-size: 17.5px;
+    transition-delay: 600ms;
+}
+
+#aboutme .contact-about-me {
+    display: flex;
+    gap: 10px;
+}
+
+#aboutme .contact-about-me .contact-me-logo {
+    background-color: var(--background);
+    color: var(--accent);
+    height: 30px;
+    width: 30px;
+    border-radius: 2px;
+}
+#aboutme .contact-about-me .contact-me-logo:hover {
+    background-color: var(--accent);
+    color: var(--secondary);
+}
+
+#aboutme div.about-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#aboutme div.about-right div{
+    position: relative;
+    transform: rotate(-2deg);
+    
+}
+
+#aboutme div.about-right #blob {
+    width: 500px;
+    height: 500px;
+    color: var(--accent2);
+}
+#aboutme div.about-right #blob:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.02);
+    z-index: -1;
+    color: var(--accent);
+}
+#aboutme div.about-right div.img-container {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 0 0 50% 50%;
+    overflow: hidden;
+}
+#aboutme div.about-right div.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 672px) {
+    #aboutme div.about-right #blob {
+        width: clamp(150px, calc(50vw), 500px);
+        height: clamp(150px, calc(50vw), 500px);
+        color: var(--accent2);
+    }
+    #aboutme .greeting-1,
+    #aboutme .greeting-2,
+    #aboutme .role {
+        text-align: center;
+    }
+    #aboutme div.about-left {
+        min-width: auto;
+        width: 100%;
+        height: max-content;
+    }
+    #aboutme .contact-me  {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 410px) {
+    #aboutme .contact-me {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 20px;
+    }
+    #aboutme .contact-me p {
+        margin: 0;
+    }
+}
+
+#aboutme div.aboutme-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+#aboutme div.aboutme-title h2 {
+    color: var(--accent);
+    font-family: "Inter Light", sans-serif;
+    position: relative;
+    transform: translateX(25px);
+    font-size: clamp(25px, calc(5vw), 35px);
+    margin-bottom: 0;
+}
+#aboutme div.aboutme-title div {
+    background-color: var(--accent);
+    width: 160px;
+    transform: translateX(-25px);
+    height: clamp(5px, calc(1vw), 8px);
+}
+@media screen and (max-width: 672px) {
+    #aboutme div.aboutme-title div {
+        width: 100px;
+        transform: translateX(-10px);
+    }
+}
 
 
 
