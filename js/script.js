@@ -1,7 +1,10 @@
 import skills from "../jsons/skills.json" assert { type: "json" };
+import projects from "../jsons/projects.json" assert { type: "json" };
 
 const largeScreenSize = 990;
 const mediumScreenSize = 672;
+
+let currentPage = 0;
 
 "use strict";
 
@@ -56,6 +59,38 @@ function observeHiddenElements() {
     hiddenElements.forEach((el) => observer.observe(el));
 }
 
+function fillProjects() {
+
+    const projectsContainer = document.querySelector("#projects .projects-container");
+    
+    for (const project of projects) {
+
+        projectsContainer.insertAdjacentHTML("beforeend", `
+            <div class="project">
+                <div class="project-img-container">
+                    <img src="/images/projects/${project.image[0]}"/>
+                </div>
+                <p class="project-title">${project.name}</p>
+                <div class="tags">
+                    ${project.tags.map((tag) => {
+                        return (`<p class="tag">${tag}</p>`)
+                    }).join("")}
+                </div>
+                <svg width="251" height="341" viewBox="0 0 251 341" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrowRightProject">
+                    <path d="M0 338.027L188.889 169.976L250.361 169.976L65.1343 338.027L0 338.027Z" fill="currentColor"/>
+                    <path d="M187.486 170.256L0.640621 2.20526L63.7308 2.20526L251.001 170.256L187.486 170.256Z" fill="currentColor"/>
+                </svg>
+            </div>       
+        `)
+    }
+}
+
+function handleProjectClick(project) {
+    console.log(project.querySelector("p").innerText)
+}
+
+
+
 function init() {
     observeHiddenElements();
 
@@ -63,6 +98,10 @@ function init() {
     window.addEventListener("resize", changeSkillRowAmount)
     
     fillSkills();
+    fillProjects();
+
+    const projectsAll = document.querySelectorAll("#projects .project");
+    projectsAll.forEach((project) => project.addEventListener("click", () => handleProjectClick(project)))
 
 }
 

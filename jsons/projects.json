@@ -1,36 +1,26 @@
 [
     {
-        "name": "",
-        "image": "",
-        "link" : "",
-        "description1": "",
-        "description2": "",
-        "description3": ""
+        "name": "Vic",
+        "image": ["vic_blazor.png", "vic_kotlin.png"],
+        "description": "Group project in my second year of Applied Informatics. We were given the choice between two companies to create a project for. Ultimately, we were assigned a company within the school itself, 'VIC'. For this project, we needed to develop a web application that enabled them to keep track of virtual machine orders. As a group, we used .NET Blazor and C# to create a functional front-end and back-end. We encountered some challenges, particularly with lengthy forms on certain pages. However, in the end, we provided them with a working and excellent-looking web application.",
+        "tags": [".NET Blazor", "Kotlin", "C#", "Figma", "Git"]
     },
     {
-        "name": "",
-        "image": "",
-        "link" : "",
-        "description1": "",
-        "description2": "",
-        "description3": ""
+        "name": "Fluvius",
+        "image": ["fluvius_java.png", "fluvius_react.png"],
+        "description": "Group project in my second year of Applied Informatics. We had the opportunity to develop a web application for Fluvius. This application would serve as their dashboard for sustainability goals. Using React for the front-end and Node.js for the back-end, we created just that. Alongside the web app, we also developed a desktop application using Java. This application was more for administrative use, where an admin could change information within the system.",
+        "tags": ["Java", "React", "NodeJS", "MySQL", "Figma", "Git"]
     },
     {
-        "name": "",
-        "image": "",
-        "link" : "",
-        "description1": "",
-        "description2": "",
-        "description3": "",
-        "hrefLink": ""
-    }
-    ,
+        "name": "Game webshop",
+        "image": ["webshop.png"],
+        "description": "Solo project during my second year in my course. We were given the option to choose what we were building. After struggling to find a creative idea, I came up with a webshop where you could search, look at, and 'buy' games. There was a login and register system to keep track of orders. I used React to create the front-end and also made a REST API with Node.js to keep track of all the data. Using MySQL, I stored everything necessary. The result was a responsive and clean webshop.",
+        "tags": ["React", "NodeJS", "MySQL", "Git"]
+    },
     {
-        "name": "",
-        "image": "",
-        "link" : "",
-        "description1": "",
-        "description2": "",
-        "description3": ""
+        "name": "Rummikub",
+        "image": ["rummikub_java.png"],
+        "description": "Group project during my first year in my Applied Informatics course. We used Java along with JavaFX, and we employed Scenebuilder to create Rummikub. It was as good as we could make it with our skills back then and our knowledge of Java. The application needed to connect to an external database. We were told to use MySQL, which we did. The end result was a very rudimentary, but working application that simulated a very basic Rummikub game.",
+        "tags": ["Java", "JavaFX", "Scenebuilder", "NodeJS", "MySQL", "Git"]
     }
 ]
