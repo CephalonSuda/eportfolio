@@ -4,7 +4,11 @@ import projects from "../jsons/projects.json" assert { type: "json" };
 const largeScreenSize = 990;
 const mediumScreenSize = 672;
 
-let currentPage = 0;
+let amountScrolled;
+
+const header = document.querySelector("header");
+const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 
 "use strict";
 
@@ -85,11 +89,200 @@ function fillProjects() {
     }
 }
 
-function handleProjectClick(project) {
-    console.log(project.querySelector("p").innerText)
+function showProjectInfo() {
+    
 }
 
+function addProjectPopUp(title) {
 
+    const project = projects.find((project) => project.name === title);
+
+    document.body.insertAdjacentHTML("beforeend", `
+        <div class="pop-up-project">
+            <button class="close-project-btn">
+                <svg width="332" height="332" viewBox="0 0 332 332" fill="none" xmlns="http://www.w3.org/2000/svg" class="close-project">
+                    <path d="M88.5332 262.833L69.1665 243.467L146.633 166L69.1665 88.5334L88.5332 69.1667L166 146.633L243.467 69.1667L262.833 88.5334L185.366 166L262.833 243.467L243.467 262.833L166 185.367L88.5332 262.833Z" fill="currentColor  "/>
+                </svg>
+            </button>
+            <ul class="tags-pop-up">
+                ${project?.tags.map((tag) => {
+                    return `<li><p>${tag}</p></li>`
+                }).join("")}
+            </ul>
+            <div class="pop-up-info-container">
+                <div class="pop-up-left">
+                    <div class="pop-up-title">
+                        <h2>Why</h2>
+                        <div></div>
+                    </div>
+                    <p class="textblock-info">
+                        ${project?.description}
+                    </p>
+                </div>
+                ${project?.image && project?.image.length?
+                    `
+                    <div class="pop-up-right">
+                        ${project.image.map((image) => {
+                        return `<a href="images/projects/${image}" target="_blank"><img alt="${image.split(".")[0]}" src="images/projects/${image}"/></a>`
+                        }).join("")}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+            </div>
+                ${project?.link && Object.entries(project?.link).length?
+                    `
+                    <div class="pop-up-links">
+                        ${Object.entries(project.link).map((entry) => {
+                            return `<a href="${entry[1]}" target="_blank">${entry[0]}</a>`
+                        }).join("")}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+        </div>
+    `)
+
+    const closePopUpBtn = document.querySelector(".pop-up-project .close-project-btn");
+    closePopUpBtn.addEventListener("click", closePopup);
+
+    const popUpContainer = document.querySelector(".pop-up-project");
+
+    popUpContainer.animate([
+        {opacity: 0},
+        {opacity: 1}
+    ], {
+        fill: "forwards",
+        duration: 500,
+        iterations: 1,
+    })
+
+}
+
+function handleProjectClick(project) {
+
+    amountScrolled = window.scrollY;
+    const circle = document.querySelector(".circle-cover");
+
+    
+    let target = project.target;
+
+    while (target.tagName !== "DIV" && !target.classList.contains("project")){
+        target = target.closest(".project");
+    }
+
+    const title = target.querySelector("p")?.innerText;
+    const fastAnimate = {
+        fill: "forwards",
+        duration: 1,
+        iterations: 1,
+      }
+
+    circle.style["left"] = `${project.clientX}px`;
+    circle.style["top"] = `${project.clientY}px`; 
+
+    circle.animate([
+        { "zIndex": -100},
+        { "zIndex": 90} 
+    ],
+    fastAnimate)
+    circle.animate([
+        { opacity: 0},  
+        { opacity: 1}
+    ],
+    fastAnimate)
+    circle.animate([
+        { width: "50px"},
+        { width: "1000%"}
+    ], 
+    {
+        fill: "forwards",
+        duration: 2000,
+        iterations: 1,
+    })
+
+    header.style.display = "none";
+    main.style.display = "none";
+    footer.style.display = "none";
+    
+
+
+    setTimeout(() => {
+        addProjectPopUp(title);
+
+        //const popUpContainer = document.querySelector(".pop-up-project");
+        //popUpContainer.style.display = "block";
+    }, 1000)
+
+
+    showProjectInfo();
+}
+
+function closePopup() {
+
+    const popUpContainer = document.querySelector(".pop-up-project");
+
+    popUpContainer.animate([
+        {opacity: 1},
+        {opacity: 0}
+    ], {
+        fill: "forwards",
+        duration: 500,
+        iterations: 1,
+    })
+
+    setTimeout(() => {
+        popUpContainer.style.display = "none";
+        popUpContainer.remove();
+    }, 1000)
+
+
+    const circle = document.querySelector(".circle-cover");
+    const fastAnimate = {
+        fill: "forwards",
+        duration: 1,
+        iterations: 1,
+    }
+
+    circle.animate([
+        { width: "1000%"},
+        { width: "50px"}
+    ], 
+    {
+        fill: "forwards",
+        duration: 1000,
+        iterations: 1,
+
+    });
+
+    setTimeout(() => {
+        circle.animate([
+            { opacity: 1},  
+            { opacity: 0}
+        ],
+        fastAnimate)
+    
+        circle.animate([
+            { "zIndex": 90},
+            { "zIndex": -100} 
+        ],
+        fastAnimate);
+        
+        header.style.display = "block";
+        main.style.display = "flex";
+        footer.style.display = "block";
+
+        window.scrollTo({
+            top : amountScrolled,
+            behavior: "instant"
+        });
+
+    }, 1000)
+
+
+}
 
 function init() {
     observeHiddenElements();
@@ -101,7 +294,7 @@ function init() {
     fillProjects();
 
     const projectsAll = document.querySelectorAll("#projects .project");
-    projectsAll.forEach((project) => project.addEventListener("click", () => handleProjectClick(project)))
+    projectsAll.forEach((project) => project.addEventListener("click", handleProjectClick));
 
 }
 
