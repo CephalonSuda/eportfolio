@@ -284,6 +284,17 @@ function closePopup() {
 
 }
 
+function handleScrolling(e) {
+    checkOffset();
+    const scrollToTopBtn = document.querySelector(".go-to-top-btn");
+
+    if (window.scrollY > 200) {
+        scrollToTopBtn.style.display = "grid";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+}
+
 function init() {
     observeHiddenElements();
 
@@ -296,6 +307,25 @@ function init() {
     const projectsAll = document.querySelectorAll("#projects .project");
     projectsAll.forEach((project) => project.addEventListener("click", handleProjectClick));
 
+    window.addEventListener('scroll', handleScrolling);
 }
+
+const socialFloat = document.querySelector('.go-to-top-btn');
+
+function checkOffset() {
+  function getRectTop(el){
+    var rect = el.getBoundingClientRect();
+    return rect.top;
+  }
+  
+  if((getRectTop(socialFloat) + document.body.scrollTop) + socialFloat.offsetHeight >= (getRectTop(footer) + document.body.scrollTop) - 10)
+    socialFloat.style.position = 'absolute';
+  if(document.body.scrollTop + window.innerHeight < (getRectTop(footer) + document.body.scrollTop))
+    socialFloat.style.position = 'fixed'; // restore when you scroll up
+  
+}
+
+
+
 
 window.onload = init;

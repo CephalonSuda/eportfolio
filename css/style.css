@@ -58,6 +58,22 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+body::-webkit-scrollbar-track
+{
+	border-radius: 5px;
+	background-color: var(--secondary)
+}
+
+body::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: var(--accent);
+}
 
 .hidden {
     opacity: 0;
@@ -145,6 +161,7 @@ header nav ul li a.cv-download:active {
     box-shadow: 0px 0px #53A27D;
 }
 main {
+    position: relative;
     max-width: var(--large-screen-size);
     width: 100%;
     display: flex;
@@ -154,11 +171,6 @@ main {
 main section.main-section {
     min-height: 100vh;
     width: 100%;
-    background-color: transparent; /* Unneeded once fully done*/
-}
-
-main section.main-section:nth-child(3) {    /* Unneeded once fully done*/
-    background-color: transparent;
 }
 
 main section.main-section.home:first-child {
@@ -1152,12 +1164,6 @@ POP UP PROJECT
     }
 }
 
-@media screen and (max-width: 415px) {
-    /* .pop-up-project .pop-up-right {
-        display: none;
-    } */
-}
-
 @media screen and (max-width: 338px) {
     .pop-up-project p.textblock-info {
         font-size: 13px;
@@ -1170,4 +1176,33 @@ POP UP PROJECT
         font-size: 12px;
     }
 
+}
+
+/*
+=====================================
+GO TO TOP BUTTON
+=====================================
+*/
+
+.go-to-top-btn {
+    position: fixed;
+    aspect-ratio: 1;
+    width: 60px;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--accent);
+    color: var(--secondary);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    z-index: 80;
+}
+.go-to-top-btn svg {
+    height: 50%;
+    width: 50%;
+}
+.go-to-top-btn:hover {
+    background-color: var(--secondary);
+    color: var(--accent);
+    border: 3px solid var(--accent);
 }
