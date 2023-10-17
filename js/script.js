@@ -93,8 +93,13 @@ function fillProjects() {
 
         projectsContainer.insertAdjacentHTML("beforeend", `
             <div class="project">
-                <div class="project-img-container">
-                    <img src="/images/projects/${project.image[0]}"/>
+                <div class="project-img-container no-photo">
+                    ${project?.image && project?.image?.length?
+                        `<img src="/images/projects/${project.image[0]}"/>`
+                        :
+                        ""
+                    }
+                    
                 </div>
                 <p class="project-title">${project.name}</p>
                 <div class="tags">

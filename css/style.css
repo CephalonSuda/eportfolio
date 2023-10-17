@@ -1317,3 +1317,7 @@ footer .contact-me-logos {
 footer hr {
     color: var(--secondary);
 }
+
+.no-photo {
+    background-color: var(--accent);
+}
