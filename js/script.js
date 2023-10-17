@@ -1,5 +1,8 @@
+"use strict";
+
 import skills from "../jsons/skills.json" assert { type: "json" };
 import projects from "../jsons/projects.json" assert { type: "json" };
+
 
 const largeScreenSize = 990;
 const mediumScreenSize = 672;
@@ -10,7 +13,17 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
-"use strict";
+const goToTopButton = document.querySelector('.go-to-top-btn');
+
+
+
+function openNav() {
+    document.getElementById("navigation-overlay").style.height = "100%";
+}
+  
+function closeNav() {
+    document.getElementById("navigation-overlay").style.height = "0%";
+}
 
 function changeSkillRowAmount(x) {
     const skillsContainer = document.querySelector("#skills ul.skills-container");
@@ -295,6 +308,20 @@ function handleScrolling(e) {
     }
 }
 
+function checkOffset() {
+    function getRectTop(el){
+      var rect = el.getBoundingClientRect();
+      return rect.top;
+    }
+    
+    if((getRectTop(goToTopButton) + document.body.scrollTop) + goToTopButton.offsetHeight >= (getRectTop(footer) + document.body.scrollTop) - 10)
+      goToTopButton.style.position = 'absolute';
+    if(document.body.scrollTop + window.innerHeight < (getRectTop(footer) + document.body.scrollTop))
+      goToTopButton.style.position = 'fixed';
+    
+}
+
+
 function init() {
     observeHiddenElements();
 
@@ -310,22 +337,7 @@ function init() {
     window.addEventListener('scroll', handleScrolling);
 }
 
-const socialFloat = document.querySelector('.go-to-top-btn');
-
-function checkOffset() {
-  function getRectTop(el){
-    var rect = el.getBoundingClientRect();
-    return rect.top;
-  }
-  
-  if((getRectTop(socialFloat) + document.body.scrollTop) + socialFloat.offsetHeight >= (getRectTop(footer) + document.body.scrollTop) - 10)
-    socialFloat.style.position = 'absolute';
-  if(document.body.scrollTop + window.innerHeight < (getRectTop(footer) + document.body.scrollTop))
-    socialFloat.style.position = 'fixed'; // restore when you scroll up
-  
-}
-
-
-
 
 window.onload = init;
+window.openNav = openNav
+window.closeNav = closeNav;

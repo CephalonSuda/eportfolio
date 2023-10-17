@@ -176,6 +176,84 @@ header nav ul li a.cv-download{
 header nav ul li a.cv-download:active {
     box-shadow: 0px 0px #53A27D;
 }
+
+.hamburger {
+    width: 50px;
+    height: 50px;
+    color: var(--text);
+    display: none;
+    padding: 5px;
+}
+.hamburger:hover {
+    cursor: pointer;
+}
+.hamburger:hover,
+.hamburger:active {
+    color: var(--accent);
+}
+
+@media screen and (max-width: 990px){
+    .hamburger {
+        display: block;
+    }
+    header nav ul.nav-links {
+        display: none;
+    }
+}
+
+.overlay {
+    width: 100%;
+    height: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.95);
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 200;
+  }
+  
+  .overlay-content {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    top: 25%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: var(--secondary);
+    display: block;
+    transition: 0.3s;
+    margin-bottom: 15px;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: var(--accent);
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+
 main {
     position: relative;
     max-width: var(--large-screen-size);
@@ -192,6 +270,8 @@ main section.main-section {
 main section.main-section.home:first-child {
     min-height: calc(100vh - 100px);
 }
+
+
 
 /* 
 =======================================
