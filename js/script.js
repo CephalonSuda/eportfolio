@@ -1,8 +1,168 @@
 "use strict";
 
-import skills from "../jsons/skills.json" assert { type: "json" };
-import projects from "../jsons/projects.json" assert { type: "json" };
+// import skills from "../jsons/skills.json" assert { type: "json" };
+// import projects from "../jsons/projects.json" assert { type: "json" };
 
+
+const skills = [
+    {
+        "alt" : "Python logo",
+        "image" : "python.png",
+        "link": "https://www.python.org/"
+    },
+    {
+        "alt" : "HTML5 logo",
+        "image" : "html5.png",
+        "link": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+        "alt" : "CSS3 logo",
+        "image" : "css3.png",
+        "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+        "alt" : "JS logo",
+        "image" : "javascript.png",
+        "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+    {
+        "alt" : "React logo",
+        "image" : "react.png",
+        "link": "https://react.dev/"
+    },
+    {
+        "alt" : "React Native logo",
+        "image" : "react-native.png",
+        "link": "https://reactnative.dev/docs/getting-started"
+    },
+    {
+        "alt" : "ChartJS logo",
+        "image" : "chartjs.png",
+        "link": "https://www.chartjs.org/docs/latest/"
+    },
+    {
+        "alt" : "Cypress logo",
+        "image" : "cypress.png",
+        "link": "https://docs.cypress.io/guides/overview/why-cypress"
+    },
+    {
+        "alt" : ".NET Blazor logo",
+        "image" : "dotnet-blazor.png",
+        "link": "https://learn.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-7.0"
+    },
+    {
+        "alt" : "C# logo",
+        "image" : "csharp.png",
+        "link": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+    },
+    {
+        "alt" : "TypeScript logo",
+        "image" : "typescript.png",
+        "link": "https://www.typescriptlang.org/docs/"
+    },
+    {
+        "alt" : "Expo logo",
+        "image" : "expo.png",
+        "link": "https://docs.expo.dev/"
+    },
+    {
+        "alt" : "Appium logo",
+        "image" : "appium.png",
+        "link": "https://appium.io/docs/en/2.1/"
+    },
+    {
+        "alt" : "NodeJS logo",
+        "image" : "nodejs.png",
+        "link": "https://nodejs.org/en/docs"
+    },
+    {
+        "alt" : "Jest logo",
+        "image" : "jest.png",
+        "link": "https://jestjs.io/docs/getting-started"
+    },
+    {
+        "alt" : "Java logo",
+        "image" : "java.png",
+        "link": "https://docs.oracle.com/en/java/"
+    },
+    {
+        "alt" : "JavaFX logo",
+        "image" : "javafx.png",
+        "link": "https://openjfx.io/"
+    },
+    {
+        "alt" : "Kotlin logo",
+        "image" : "kotlin.png",
+        "link": "https://kotlinlang.org/docs/home.html"
+    },
+    {
+        "alt" : "Scenebuilder logo",
+        "image" : "scenebuilder.png",
+        "link": "https://docs.oracle.com/javafx/scenebuilder/1/user_guide/jsbpub-user_guide.htm"
+    },
+    {
+        "alt" : "MySQL logo",
+        "image" : "mysql.png",
+        "link": "https://dev.mysql.com/doc/"
+    },
+    {
+        "alt" : "PostgreSQL logo",
+        "image" : "postgresql.png",
+        "link": "https://www.postgresql.org/docs/"
+    },
+    {
+        "alt" : "MongoDB logo",
+        "image" : "mongodb.png",
+        "link": "https://www.mongodb.com/docs/"
+    },
+    {
+        "alt" : "Neo4J logo",
+        "image" : "neo4j.png",
+        "link": "https://neo4j.com/docs/"
+    },
+    {
+        "alt" : "Seaborn logo",
+        "image" : "seaborn.png",
+        "link": "https://seaborn.pydata.org/"
+    },
+    {
+        "alt" : "Git logo",
+        "image" : "git.png",
+        "link": "https://git-scm.com/doc"
+    },
+    {
+        "alt" : "Figma logo",
+        "image" : "figma.png",
+        "link": "https://www.figma.com"
+    }
+];
+
+const projects = [
+    {
+        "name": "Vic",
+        "image": ["vic_blazor.png", "vic_kotlin.png"],
+        "description": "Group project in my second year of Applied Informatics. We were given the choice between two companies to create a project for. Ultimately, we were assigned a company within the school itself, 'VIC'. For this project, we needed to develop a web application that enabled them to keep track of virtual machine orders. As a group, we used .NET Blazor and C# to create a functional front-end and back-end. We encountered some challenges, particularly with lengthy forms on certain pages. However, in the end, we provided them with a working and excellent-looking web application.",
+        "tags": [".NET Blazor", "Kotlin", "C#", "Figma", "Git"]
+    },
+    {
+        "name": "Fluvius",
+        "image": ["fluvius_java.png", "fluvius_react.png"],
+        "description": "Group project in my second year of Applied Informatics. We had the opportunity to develop a web application for Fluvius. This application would serve as their dashboard for sustainability goals. Using React for the front-end and Node.js for the back-end, we created just that. Alongside the web app, we also developed a desktop application using Java. This application was more for administrative use, where an admin could change information within the system.",
+        "tags": ["Java", "React", "NodeJS", "MySQL", "Figma", "Git"]
+    },
+    {
+        "name": "Game webshop",
+        "image": ["webshop.png"],
+        "description": "Solo project during my second year in my course. We were given the option to choose what we were building. After struggling to find a creative idea, I came up with a webshop where you could search, look at, and 'buy' games. There was a login and register system to keep track of orders. I used React to create the front-end and also made a REST API with Node.js to keep track of all the data. Using MySQL, I stored everything necessary. The result was a responsive and clean webshop.",
+        "tags": ["React", "NodeJS", "MySQL", "Git"]
+    },
+    {
+        "name": "Rummikub",
+        "image": ["rummikub_java.png"],
+        "description": "Group project during my first year in my Applied Informatics course. We used Java along with JavaFX, and we employed Scenebuilder to create Rummikub. It was as good as we could make it with our skills back then and our knowledge of Java. The application needed to connect to an external database. We were told to use MySQL, which we did. The end result was a very rudimentary, but working application that simulated a very basic Rummikub game.",
+        "tags": ["Java", "JavaFX", "Scenebuilder", "NodeJS", "MySQL", "Git"]
+    }
+]
 
 const largeScreenSize = 990;
 const mediumScreenSize = 672;
