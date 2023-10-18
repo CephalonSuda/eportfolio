@@ -128,5 +128,15 @@
         "alt" : "Figma logo",
         "image" : "figma.png",
         "link": "https://www.figma.com"
+    },
+    {
+        "alt" : "Jira logo",
+        "image" : "jira.png",
+        "link": "https://www.atlassian.com/software/jira?&aceid=&adposition=&adgroup=141367400149&campaign=18458298143&creative=656526286209&device=c&keyword=jira&matchtype=e&network=g&placement=&ds_kids=p73363694894&ds_e=GOOGLE&ds_eid=700000001558501&ds_e1=GOOGLE&gclid=Cj0KCQjwhL6pBhDjARIsAGx8D58Hq3PAtlpGMb54v0rKV-a5EGfW0fEGrMXj8juzzwXVE-wGdqXi-sQaArrBEALw_wcB&gclsrc=aw.ds"
+    },
+    {
+        "alt" : "Trello logo",
+        "image" : "trello.png",
+        "link": "https://trello.com/?&aceid=&adposition=&adgroup=142052875575&campaign=18422870630&creative=672183077514&device=c&keyword=trello&matchtype=e&network=g&placement=&ds_kids=p73326130039&ds_e=GOOGLE&ds_eid=700000001557344&ds_e1=GOOGLE&gad=1&gclid=Cj0KCQjwhL6pBhDjARIsAGx8D58ILB972QCg6H46aOsVEFioypd473MhUI7dSj49M4B-FWFnKnSs-wsaAuOrEALw_wcB&gclsrc=aw.ds"
     }
 ]
